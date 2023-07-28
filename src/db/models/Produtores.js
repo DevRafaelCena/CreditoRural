@@ -1,8 +1,9 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('./index');
+const { sequelize } = require('../index');
 
-const Produtores = sequelize.define('Produtores', {
-
+module.exports = (sequelize) => {
+    
+    const Produtores = sequelize.define('Produtores', {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -35,5 +36,5 @@ const Produtores = sequelize.define('Produtores', {
          tableName: 'produtores',
         }
     );
-
-module.exports = Produtores;
+    return Produtores;
+};
