@@ -11,6 +11,11 @@
     "serverless-http": "^3.1.1"
   },
   "devDependencies": {
-    "serverless-offline": "^12.0.4"
+    "jest": "^29.6.2",
+    "serverless-offline": "^12.0.4",
+    "supertest": "^6.3.3"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }

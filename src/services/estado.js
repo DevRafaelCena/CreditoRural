@@ -10,9 +10,9 @@ async function buscarEstadoPorUf(uf) {
     if(!estado) throw new Error('Estado não encontrado.');
 
     return estado;
-  } catch (error) {
+  } catch (error) {   
        
-    throw new Error('Erro ao buscar o estado.');
+    throw new Error(error.message);
   }
 }
 

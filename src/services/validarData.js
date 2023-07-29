@@ -13,12 +13,20 @@ function validaData(dataString) {
         const dia = parseInt(match[1], 10);
         const mes = parseInt(match[2], 10);
         const ano = parseInt(match[3], 10);
-    
-        const dataFormatada = new Date(ano, mes - 1, dia);
-    
-        if (isNaN(dataFormatada.getTime())) {    
+
+        if (dia < 1 || dia > 31) {
             throw new Error('Data inválida');
         }
+
+        if (mes < 1 || mes > 12) {
+            throw new Error('Data inválida');
+        }
+
+        if (ano <= 0) {
+            throw new Error('Data inválida');
+        }
+    
+        const dataFormatada = new Date(ano, mes - 1, dia);
     
         return dataFormatada;
     }catch(error){
