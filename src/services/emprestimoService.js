@@ -30,16 +30,17 @@ async function retornaUltimosEmprestimos() {
             return []; 
         }
 
-        const formataRetorno = emprestimos.map(emprestimo => {
+        const emprestimosOrdenados = emprestimos.sort((a, b) => new Date(a.data_quitacao) - new Date(b.data_quitacao));
+        
+        const formataRetorno = emprestimosOrdenados.map(emprestimo => {
             return {
-                nomeProdutor: emprestimo.Produtor.nome,
-                estado: emprestimo.estado,
-                qtdSacasCafe: emprestimo.qtd_sacas,
-                valorTotalEmprestimo: emprestimo.valor_total,
-                dataVencimento: emprestimo.data_quitacao
-            }
-        })
-
+              nomeProdutor: emprestimo.Produtor.nome,
+              estado: emprestimo.Produtor.estado,
+              qtdSacasCafe: emprestimo.qtd_sacas,
+              valorTotalEmprestimo: emprestimo.valor_total,
+              dataVencimento: emprestimo.data_quitacao
+            };
+          });     
 
         return formataRetorno;
 

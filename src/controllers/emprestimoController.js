@@ -20,7 +20,7 @@ async function realizarEmprestimo(req, res) {
 
     const estadoPreco = await buscarEstadoPorUf(estado);
     
-    const produtor = await buscarOuCriarProdutor(nome, cepValido, estado);
+    const produtor = await buscarOuCriarProdutor(nome, cepValido, estadoPreco.nome);
 
     const valor = calcularValorEmprestimoComJuros(qtd_sacas, estadoPreco.preco, data_quitacao_formatada);    
     
