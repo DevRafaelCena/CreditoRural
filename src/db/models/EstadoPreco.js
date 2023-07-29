@@ -1,33 +1,32 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../index'); // Importe a instância do Sequelize
+const { sequelize } = require('../index');
 
 module.exports = (sequelize) => {
-    const EstadoPreco = sequelize.define(
-        'EstadoPreco',
-        {
+    const EstadoPreco = sequelize.define('EstadoPreco',{
+        
             id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
             },
             nome: {
-            type: DataTypes.STRING,
-            allowNull: false,
+                type: DataTypes.STRING,
+                allowNull: false,
             },
             uf: {
-            type: DataTypes.STRING(2),
-            allowNull: false,
-            unique: true,
+                type: DataTypes.STRING(2),
+                allowNull: false,
+                unique: true,
             },
             preco: {
-            type: DataTypes.DECIMAL(10, 2),
-            allowNull: false,
+                type: DataTypes.DECIMAL(10, 2),
+                allowNull: false,
             },
         },
         {
-            tableName: 'estados_precos', // Nome da tabela no banco de dados
-            timestamps: false, // Desativa as colunas createdAt e updatedAt
+            tableName: 'estados_precos',
+            timestamps: false,
         }
     );
 
