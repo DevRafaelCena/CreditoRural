@@ -34,10 +34,11 @@ module.exports = (sequelize) => {
     },
     }, {
         tableName: 'emprestimos',
+        timestamps: false,
     });
-    
-    Emprestimos.belongsTo(Produtores, { foreignKey: 'produtor_id' });
 
+    Emprestimos.belongsTo(Produtores, { foreignKey: 'produtor_id' });
+    
 
     return Emprestimos;
 };
