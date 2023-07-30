@@ -12,6 +12,11 @@ async function realizarEmprestimo(req, res) {
 
     const { nome, cep, qtd_sacas, data_quitacao } = req.body;
 
+    // se a qdt de sacas for menor que 1 ou não for inteiro
+    if (qtd_sacas < 1 || !Number.isInteger(qtd_sacas)) {
+      throw new Error('Quantidade de sacas inválida.');
+    }
+
     const data_quitacao_formatada = validaData(data_quitacao);
 
     const cepValido = await validarCEP(cep);
