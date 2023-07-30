@@ -4,12 +4,42 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs18.x
-
+  httpApi:
+    cors: true
+  vpc:
+    securityGroupIds:
+      - sg-0ff5e58e4ea5f3189  # ID do grupo de segurança da VPC
+    subnetIds:
+      - subnet-05c4e467c4bebd3a8  # ID da sub-rede da VPC
+      - subnet-051c3e2ca90ddd12c  # ID da sub-rede da VPC
 functions:
   api:
     handler: index.handler
     events:
-      - httpApi: '*'
+      - httpApi:
+          path: /{proxy+}  # Configuração de curinga para todas as rotas
+          method: ANY
+          maxAge: 86400 # Tempo de cache para o CORS (24 horas)
+      - httpApi:
+          path: /{proxy+}  # Configuração de curinga para todas as rotas
+          method: OPTIONS
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+            allowCredentials: true
+            maxAge: 86400
+    timeout: 85
+package:
+  exclude:
+    - __tests__                # Ignorar a pasta __tests__ e todo o seu conteúdo
+    - .gitignore               # Ignorar o arquivo .gitignore
+    - jest.config.js           # Ignorar o arquivo jest.config.js
+    - README.md                # Ignorar o arquivo README.md
+    - .env.example             # Ignorar o arquivo .env.example
+    - coverage                 # Ignorar a pasta coverage e todo o seu conteúdo
+    - .git                     # Ignorar a pasta .git e todo o seu conteúdo
 
 plugins:
   - serverless-offline

@@ -5,6 +5,14 @@ const bodyParser = require("body-parser");
 const { authorization } = require("./src/middlewares/authMiddleware");
 const emprestimoController = require("./src/controllers/emprestimoController");
 
+app.options("*", (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+  res.set("Access-Control-Allow-Methods", "GET,PUT,POST");
+  res.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.sendStatus(200);
+});
+
+
 app.get("/", (req, res, next) => {
   return res.status(200).json({
     message: "Hello from root!",
