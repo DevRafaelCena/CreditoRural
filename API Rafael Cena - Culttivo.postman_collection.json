@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "a50c6f85-5f59-450c-8716-8a91bdffd8f4",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16095496"
+	},
+	"item": [
+		{
+			"name": "index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Solicita Emprestimo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Rafael Teste\",\r\n    \"cep\": \"08430-150\",\r\n    \"qtd_sacas\": 10,\r\n    \"data_quitacao\": \"29/09/2023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/emprestimo",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"emprestimo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca ultimos 10 emprestimos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/emprestimo",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"emprestimo"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
